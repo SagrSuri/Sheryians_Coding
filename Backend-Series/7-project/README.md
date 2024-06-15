@@ -1,1 +1,0 @@
-- 1. terminal command ``` npm init -y ```
