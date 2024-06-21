@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJS | index</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/output.css" />
+  </head>
+  <body>
+    <div class="bg-zinc-800 w-ful h-full text-white p-10">
+
+        <div class="nav mb-10">
+            <a class="text-blue-600" href="/">Back Home</a>
+        </div>
+        <h1 class="tracking-tighter">ALL USER</h1>
+
+        <div class="Users flex gap-3 flex-wrap mt-3">
+
+            <% if(users.length > 0 ){ %>
+                <% users.forEach(function(user){ %>
+                    <div class="user w-72 p-4 bg-zinc-800 rounded-lg">
+                        <div class="w-full h-52 bg-zinc-400 rounded">
+                            <img class="w-full h-52  rounded-lg" src="<%= user.image%>" alt="">
+                        </div>
+                        <h3 class="tracking-tighter mt-3 text-xl"><%= user.name%></h3>
+                        <h4 class="text-zinc-500"><%=user.email%></h4>
+                        <div class="flex gap-3 mt-3">
+                            <a class="cursor-pointer text-zinc-400" href="/edit/<%= user._id%>">Edit User</a>
+                            <a class="cursor-pointer text-red-500" href="/delete/<%= user._id%>">Delete User</a>
+                        </div>
+                    </div>
+                 <% })%>
+            <% } else { %>
+                <h3 class="text-zinc-500">No User YET</h3>
+           <% } %>
+        </div>
+      
+    </div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJS | index</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/output.css" />
+  </head>
+  <body>
+    <div class="bg-zinc-800 w-ful h-full text-white p-10">
+
+        <div class="nav mb-10">
+            <a class="text-blue-600" href="/read">Read</a>
+        </div>
+
+        <h1 class="tracking-tighter mb-5">UPDATE USER</h1>
+      <form action="/update/<%= user._id %>" method="post">
+        <!-- ++++++++++++++++INPUT 1 -->
+        <input
+          class="px-5 py-3 bg-transparent border-2 rounded-lg outline-none border-zinc-600"
+          name="name"
+          placeholder="name"
+          type="text"
+          value="<%= user.name%>"
+        />
+        <!-- =============INPUT 2 -->
+        <input
+          class="px-5 py-3 bg-transparent border-2 rounded-lg outline-none border-zinc-600"
+          name="email"
+          placeholder="email"
+          type="text"
+          value="<%= user.email%>"
+        />
+        <!-- ++++++++++++++IMAGE  -->
+        <input
+        class="px-5 py-3 bg-transparent border-2 rounded-lg outline-none border-zinc-600"
+        placeholder="image url"
+        name="image"
+        value="<%= user.image%>"
+      />
+        <!-- ==========SUBMIT -->
+        <input class="pt-1 pb-1 px-3 py-3 rounded hover:bg-slate-200 active:bg-slate-400 bg-yellow-600 text-black cursor-pointer" type="submit" value="Update User" />
+      </form>
+    </div>
+  </body>
+</html>

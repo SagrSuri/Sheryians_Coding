@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video 17</title>
+    <link rel="stylesheet" href="/stylesheets/output.css">
+</head>
+<body>
+    <div class="w-full min-h-screen bg-zinc-900 text-white">
+        <!-- ************LOGOUT BTN*********** -->
+        <div class="w-full flex items-center justify-end">
+            <a href="/logout" class="bg-red-800 px-2 mr-3 py-1 rounded-md inline-block mt-3 ml-2 ">Logout</a>
+        </div>
+
+        <!-- *************THE GREET*********** -->
+        <h2 class="font-bold text-3xl px-3 py-2"><span class="text-red-700">HELLO</span>, <span class="text-yellow-600"><%= user.name%></span> 😉</h2>
+
+        <h4 class="px-3 py-2 text-[1rem]">You Can Create New Post. 👇</h4>
+
+        <!-- *************FORM************ -->
+        <form  class="px-5 py-3 " action="/post" method="post">
+            <textarea class="resize-none py-2 w-1/3 outline-none bg-transparent border-2 border-zinc-700 rounded-md block px-2" placeholder="What's on your mind?" name="content"></textarea>
+            <input class="px-3 w-1/6 text-black mt-3 py-1 block bg-green-500 rounded-2xl" type="submit" value="Create New Post">
+        </form>
+
+        <!-- *************POST-CONTAINER************ -->
+        <div class="posts mt-20 ml-5 " >
+            <h3 class="text-zinc-500 font-bold">Your Posts.</h3>
+            <div class="post-container mt-5 flex flex-wrap flex-col gap-10 pb-10">
+
+                <!-- POSTS -->
+                <% user.posts.reverse().forEach(function(post){ %>
+                    <div class="post w-1/3 rounded-md p-5 bg-zinc-700 border-2 border-zinc-800">
+                        <h4 class="text-green-500 font-semibold uppercase ">@<%= user.username %></h4>
+                        <p class="p-3"><%= post.content %></p>
+                        <small><%= post.likes.length %></small>
+                        <div class="btns flex gap-3">
+                            <a  class="text-blue-500" href="/like/<%= post._id %>">
+                                <%= post.likes.indexOf(user._id) === -1  ? "Like" : "Unlike" %>
+                            </a>
+                            <a href="" class="text-zinc-400">Edit</a>
+                        </div>
+                    </div>
+               <% }) %>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
