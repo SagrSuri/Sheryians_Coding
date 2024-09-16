@@ -1,73 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EJS-FILE</title>
+    <title>EJS File Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <style>
+        /* Custom Styles */
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
 
-  <body>
-    
-    <div class="main w-full min-h-screen bg-zinc-900 text-white">
-      <h1 class="text-center font-bold p-5 text-3xl">CREATE .txt File</h1>
-      <div class="form p-10">
-        <form action="/create" method="post">
-         <input
-            class="block w-full text-green-500 rounded-md outline-none px-5 py-2 bg-zinc-800"
-            type="text"
-            placeholder="File Name"
-            name="title"
-            required
-          />
-          <textarea
-            name="details"
-            class="block w-full mt-2 px-5 py-2 rounded-md outline-none bg-zinc-800 resize-none"
-            placeholder="Data"
-            required
-          ></textarea>
-          <input
-            class="mt-2 bg-green-500 pt-2 pr-3 pl-3 pb-2 text-center font-bold rounded-3xl"
-            type="submit"
-            value="CREATE FILE"
-          />
-        </form>
-      </div>
-      <div class="task flex gap-4 flex-wrap align-center justify-center">
-        <% if(files.length > 0){ %> 
-          <% files.forEach(function(val){ %>
-        <div class="task w-72 px-3 py-4 rounded-md bg-zinc-800">
-          <h1 class="text-green-500 font-bold text-2xl tracking-tighter"><%= val %></h1>
-          <div class="flex w-full justify-between">
-            <a href="/files/<%= val %>" class="text-zinc-500 inline-block mt-3 hover:bg-white hover:rounded hover:pr-2 hover:pl-2 hover:text-blue-900"
-              >Read File</a>
-            <a href="/edit/<%= val%>"  class="text-zinc-500 inline-block mt-3 hover:bg-yellow-500 hover:rounded hover:pr-2 hover:pl-2 hover:text-black">Edit File</a>
-            <a href="/delete/<%= val%>"  class="text-zinc-500 inline-block mt-3 hover:bg-red-500 hover:rounded hover:pr-2 hover:pl-2 hover:text-white">Delete</a>
-          </div>
-        </div>
-        <% }) %> <% } else{ %>
-        <h3 class="text-zinc-600">NO TASK YET.</h3>
-        <% } %>
+<body class="bg-zinc-900 text-white">
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <header class="mb-6">
+            <h1 class="text-center text-4xl font-extrabold text-green-400">Create .txt File</h1>
+        </header>
 
-        <div class="task w-72 hidden px-3 py-4 rounded-md bg-zinc-800">
-          <h1 class="text-white text-3xl tracking-tighter">
-            Lorem ipsum dolor sit.
-          </h1>
-          <a href="" class="text-blue-500 inline-block mt-3">Read</a>
-        </div>
-        <div class="task w-72 px-3 py-4 hidden rounded-md bg-zinc-800">
-          <h1 class="text-white text-3xl tracking-tighter">
-            Lorem ipsum dolor sit.
-          </h1>
-          <a href="" class="text-blue-500 inline-block mt-3">Read More.</a>
-        </div>
-        <div class="task w-72 px-3 py-4 hidden rounded-md bg-zinc-800">
-          <h1 class="text-white text-3xl tracking-tighter">
-            Lorem ipsum dolor sit.
-          </h1>
-          <a href="" class="text-blue-500 inline-block mt-3">Read More.</a>
-        </div>
-      </div>
+        <!-- Form -->
+        <section class="mb-6">
+            <div class="bg-zinc-800 p-6 rounded-lg shadow-lg">
+                <form action="/create" method="post">
+                    <input
+                        class="block w-full text-green-500 rounded-md outline-none px-4 py-2 mb-4 bg-zinc-700 placeholder-gray-400"
+                        type="text"
+                        placeholder="File Name"
+                        name="title"
+                        required
+                    />
+                    <textarea
+                        name="details"
+                        class="block w-full mb-4 px-4 py-2 rounded-md outline-none bg-zinc-700 placeholder-gray-400 resize-none"
+                        placeholder="Data"
+                        required
+                    ></textarea>
+                    <input
+                        class="w-full bg-green-500 text-white font-bold py-2 rounded-md hover:bg-green-600 transition"
+                        type="submit"
+                        value="Create File"
+                    />
+                </form>
+            </div>
+        </section>
+
+        <!-- File Tasks -->
+        <section>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <% if(files.length > 0) { %>
+                    <% files.forEach(function(val) { %>
+                        <div class="card w-72 bg-zinc-800 p-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                            <h2 class="text-green-500 text-xl font-semibold mb-2"><%= val %></h2>
+                            <div class="flex justify-between">
+                                <a href="/files/<%= val %>" class="text-blue-400 hover:underline">Read File</a>
+                                <a href="/edit/<%= val %>" class="text-yellow-400 hover:underline">Edit File</a>
+                                <a href="/delete/<%= val %>" class="text-red-400 hover:underline">Delete</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-gray-500 text-lg">No tasks yet.</p>
+                <% } %>
+            </div>
+        </section>
     </div>
-  </body>
+</body>
 </html>

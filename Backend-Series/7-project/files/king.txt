@@ -1,0 +1,6 @@
+
+Google Maps API: For embedding maps and location data.
+
+Twitter API: For interacting with Twitter data and features.
+
+GitHub API: For accessing GitHub’s data and features.

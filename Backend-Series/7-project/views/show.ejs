@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EJS-FILE</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Show File</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .content-container {
+      white-space: pre-wrap; /* Preserve whitespace and line breaks for file content */
+    }
+  </style>
 </head>
-
-<body>
-    <div class="main w-full min-h-screen bg-zinc-900 text-white">
-        <a href="/" class="text-white hover:text-black hover:bg-white rounded active:bg-blue-800 pt-2 pb-2 pr-4 pl-4 inline-block m-5 active:animate-ping bg-green-500">Go Back</a>
-
-       <div class="pl-16 mt-5">
-        <h1 class="text-2xl text-red-500 font-bold tracking-tighter">
-            <%= filename%>
-        </h1>
-        <p class="text-xl mt-2">
-            <%=filedata%>
-        </p>
-       </div>
+<body class="bg-gray-900 text-white min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-gray-800 p-4 shadow-md">
+    <div class="container mx-auto flex items-center justify-between">
+      <a href="/" class="text-white text-xl font-bold">File Manager</a>
     </div>
-</body>
+  </nav>
 
+  <!-- Main Content -->
+  <div class="container mx-auto p-6">
+    <a href="/" class="inline-block bg-green-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300">Go Back</a>
+    <div class="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg mt-8">
+      <h1 class="text-4xl font-extrabold text-red-400 mb-6 text-center"><%= filename %></h1>
+      <div class="content-container text-lg leading-relaxed">
+        <%= filedata %>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
